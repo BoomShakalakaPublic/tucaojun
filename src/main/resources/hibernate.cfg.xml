@@ -5,16 +5,15 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    
-    <!--
+
     <property name="hibernate.connection.url">jdbc:mysql://127.10.142.2:3306/tucaomover</property>
     <property name="hibernate.connection.username">adminPFA3p5H</property>
     <property name="hibernate.connection.password">VDEiHTuhBKSd</property>
-    -->
-    
+
+    <!--
     <property name="hibernate.connection.url">jdbc:mysql://localhost/gossip?characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
-    
+        -->
     <property name="show_sql">true</property>
     <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
     
