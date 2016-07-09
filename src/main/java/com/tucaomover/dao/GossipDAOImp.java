@@ -3,47 +3,60 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gossip.dao;
+package com.tucaomover.dao;
 
-import com.gossip.entities.Comment;
+import com.tucaomover.entities.Gossip;
+import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+
+
 /**
  *
  * @author gao
  */
-public class CommentDAOImp implements CommentDAO{
-
+public class GossipDAOImp implements GossipDAO{
    private Configuration configuration = new Configuration().configure();    
    private StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
    private SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+
     
     @Override
-    public void save(Comment comment) {
+    public void save(Gossip gossip) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        session.saveOrUpdate(comment);
+        session.saveOrUpdate(gossip);
         tran.commit();
     }
 
     @Override
-    public void delete(Comment comment) {
+    public void delete(Gossip gossip) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        session.delete(comment);
+        session.delete(gossip);
         tran.commit();
     }
 
     @Override
-    public Comment getById(String id) {
+    public List<Gossip> getAll() {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        Comment comment=(Comment) session.get(Comment.class, id);
-        return comment;
+        List<Gossip> all=session.createCriteria(Gossip.class).list();
+        return all;
+        
+    }
+
+    @Override
+    public Gossip getById(String id) {
+        Session session=sessionFactory.getCurrentSession();
+        Transaction tran=session.beginTransaction();
+        Gossip gossip=(Gossip) session.get(Gossip.class, id);
+        return gossip;
     }
     
 }

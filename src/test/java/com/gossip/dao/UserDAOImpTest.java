@@ -5,7 +5,8 @@
  */
 package com.gossip.dao;
 
-import com.gossip.entities.User;
+import com.tucaomover.dao.UserDAOImp;
+import com.tucaomover.entities.User;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

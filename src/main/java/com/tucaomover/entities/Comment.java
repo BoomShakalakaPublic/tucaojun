@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gossip.entities;
+package com.tucaomover.entities;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -74,7 +74,7 @@ public class Comment implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gossip.entities.Comment[ id=" + id + " ]";
+        return "com.tucaomover.entities.Comment[ id=" + id + " ]";
     }
 
     /**

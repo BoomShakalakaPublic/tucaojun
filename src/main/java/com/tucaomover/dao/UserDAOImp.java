@@ -3,60 +3,64 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gossip.dao;
+package com.tucaomover.dao;
 
-import com.gossip.entities.Gossip;
-import java.util.List;
+import com.tucaomover.entities.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-
-
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author gao
  */
-public class GossipDAOImp implements GossipDAO{
-   private Configuration configuration = new Configuration().configure();    
+public class UserDAOImp implements UserDAO{
+    
+   private Configuration configuration = new Configuration().addResource("hibernate.cfg.xml").configure();
    private StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
    private SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
 
+    @Override
+    public Long save(User user) {
+        Session session=sessionFactory.getCurrentSession();
+        Transaction tran = session.beginTransaction();
+        session.saveOrUpdate(user);
+        tran.commit();
+        return user.getId();
+    }
     
+
     @Override
-    public void save(Gossip gossip) {
+    public void delete(User user) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        session.saveOrUpdate(gossip);
+        session.delete(user);
         tran.commit();
     }
 
     @Override
-    public void delete(Gossip gossip) {
+    public User getById(Long id) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        session.delete(gossip);
-        tran.commit();
-    }
-
-    @Override
-    public List<Gossip> getAll() {
-        Session session=sessionFactory.getCurrentSession();
-        Transaction tran=session.beginTransaction();
-        List<Gossip> all=session.createCriteria(Gossip.class).list();
-        return all;
+        User user=(User) session.get(User.class,id);
+        
+        return user;        
         
     }
 
     @Override
-    public Gossip getById(String id) {
+    public User getByEmail(String email) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        Gossip gossip=(Gossip) session.get(Gossip.class, id);
-        return gossip;
+        Criteria criteria=session.createCriteria(User.class);
+        User user=(User) criteria.add(Restrictions.eq("email",email)).uniqueResult();
+        return user;
+        
     }
+    
     
 }

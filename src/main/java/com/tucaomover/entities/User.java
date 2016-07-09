@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gossip.entities;
+package com.tucaomover.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -78,7 +78,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gossip.entities.User[ id=" + id + " ]";
+        return "com.tucaomover.entities.User[ id=" + id + " ]";
     }
 
     /**

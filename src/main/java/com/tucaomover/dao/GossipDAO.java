@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gossip.dao;
+package com.tucaomover.dao;
 
-import com.gossip.entities.Gossip;
+import com.tucaomover.entities.Gossip;
 import java.util.List;
 
 /**

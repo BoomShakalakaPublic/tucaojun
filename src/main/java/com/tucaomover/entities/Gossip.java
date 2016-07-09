@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gossip.entities;
+package com.tucaomover.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -105,7 +105,7 @@ public class Gossip implements Serializable {
 
     @Override
     public String toString() {
-        return "com.gossip.entities.Gossip[ id=" + id + " ]";
+        return "com.tucaomover.entities.Gossip[ id=" + id + " ]";
     }
 
     /**

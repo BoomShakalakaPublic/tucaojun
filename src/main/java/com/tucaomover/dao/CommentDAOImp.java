@@ -3,63 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gossip.dao;
+package com.tucaomover.dao;
 
-import com.gossip.entities.User;
-import org.hibernate.Criteria;
+import com.tucaomover.entities.Comment;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author gao
  */
-public class UserDAOImp implements UserDAO{
-   private Configuration configuration = new Configuration().configure();    
+public class CommentDAOImp implements CommentDAO{
+
+   private Configuration configuration = new Configuration().configure();
+   
    private StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
    private SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
-
-    @Override
-    public Long save(User user) {
-        Session session=sessionFactory.getCurrentSession();
-        Transaction tran = session.beginTransaction();
-        session.saveOrUpdate(user);
-        tran.commit();
-        return user.getId();
-    }
     
-
     @Override
-    public void delete(User user) {
+    public void save(Comment comment) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        session.delete(user);
+        session.saveOrUpdate(comment);
         tran.commit();
     }
 
     @Override
-    public User getById(Long id) {
+    public void delete(Comment comment) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        User user=(User) session.get(User.class,id);
-        
-        return user;        
-        
+        session.delete(comment);
+        tran.commit();
     }
 
     @Override
-    public User getByEmail(String email) {
+    public Comment getById(String id) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        Criteria criteria=session.createCriteria(User.class);
-        User user=(User) criteria.add(Restrictions.eq("email",email)).uniqueResult();
-        return user;
-        
+        Comment comment=(Comment) session.get(Comment.class, id);
+        return comment;
     }
-    
     
 }

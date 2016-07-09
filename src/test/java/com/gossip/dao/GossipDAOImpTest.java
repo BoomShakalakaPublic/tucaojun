@@ -5,8 +5,10 @@
  */
 package com.gossip.dao;
 
-import com.gossip.entities.Gossip;
-import com.gossip.entities.User;
+import com.tucaomover.dao.GossipDAOImp;
+import com.tucaomover.dao.UserDAOImp;
+import com.tucaomover.entities.Gossip;
+import com.tucaomover.entities.User;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Date;
