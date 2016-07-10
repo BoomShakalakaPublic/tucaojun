@@ -74,6 +74,7 @@ public class GossipDAOImpTest {
     /**
      * Test of getAll method, of class GossipDAOImp.
      */
+    /*
     @Test
     public void testGetAll() {
         System.out.println("getAll");
@@ -82,7 +83,7 @@ public class GossipDAOImpTest {
         List<Gossip> result = instance.getAll();
         assertEquals(expResult, result);
     }
-
+*/
     /**
      * Test of getById method, of class GossipDAOImp.
      */

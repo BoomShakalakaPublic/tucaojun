@@ -5,6 +5,7 @@
  */
 package com.tucaomover.service;
 
+import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import org.springframework.scheduling.TaskScheduler;
@@ -16,12 +17,11 @@ import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
  * @author gao
  */
 public class crawlerTimer {
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     //private TaskScheduler scheduler = new ConcurrentTaskScheduler();
     
-    @Scheduled(fixedRate=2*1000)
-    public void run(){
-        System.out.println("Run by timer");
+    @Scheduled(fixedRate=30*60*1000)
+    public void run() throws IOException{
+        Runtime.getRuntime().exec("python crawler.py");
     }
     
   
