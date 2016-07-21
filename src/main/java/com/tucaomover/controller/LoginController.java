@@ -50,7 +50,7 @@ public class LoginController {
 
             if(auth){
                 User authed = userDetails.loadByEmail(user.getEmail());
-                model = new ModelAndView("redirect: home");
+                model = new ModelAndView("redirect:home");
                 model.addObject("user",authed);
                 request.getSession().setAttribute("user", authed);
                 
