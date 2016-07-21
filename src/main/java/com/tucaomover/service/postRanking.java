@@ -12,7 +12,6 @@ import static java.lang.Math.log;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -32,9 +31,12 @@ public class postRanking {
         List<rankingRecord> result = new ArrayList<rankingRecord>();
         for(Gossip post : allPost){
             rankingRecord rr = new rankingRecord(post.getId(),post.getText(),score(post));
+            if(viewedPost.contains(post)){
+                rr.setScore(rr.getScore()*0.3);
+            }
             result.add(rr);
         }
-       Collections.sort(result);
+       //Collections.sort(result);
         return result;
     }
     

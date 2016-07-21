@@ -11,7 +11,7 @@ import java.util.Comparator;
  *
  * @author gao
  */
-public class rankingRecord implements Comparator<rankingRecord>{
+public class rankingRecord implements Comparable<rankingRecord>{
     private String postId;
     private String text;
     private double score;
@@ -28,8 +28,8 @@ public class rankingRecord implements Comparator<rankingRecord>{
 
 
     @Override
-    public int compare(rankingRecord o1, rankingRecord o2) {
-        return o1.getScore()<o2.getScore() ? -1 : o1.getScore()==o2.getScore() ? 0 : 1;
+    public int compareTo(rankingRecord o1) {
+        return this.score<o1.getScore() ? -1 : this.score==o1.getScore() ? 0 : 1;
     }
 
     /**
@@ -73,6 +73,7 @@ public class rankingRecord implements Comparator<rankingRecord>{
     public void setScore(double score) {
         this.score = score;
     }
+
     
     
 }
