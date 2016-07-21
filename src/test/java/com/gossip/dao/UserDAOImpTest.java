@@ -36,7 +36,7 @@ public class UserDAOImpTest {
     @Before
     public void setUp() {
         System.out.println("save");
-        user=new User("test","test","test@test");
+        user=new User("test","test","test@gmail.com");
         UserDAOImp instance = new UserDAOImp();
         id=instance.save(user);
         
@@ -78,7 +78,7 @@ public class UserDAOImpTest {
     @Test
     public void testGetByEmail() {
         System.out.println("getByEmail");
-        String email = "test@test";
+        String email = "test@gmail.com";
         UserDAOImp instance = new UserDAOImp();
         User expResult = user;
         User result = instance.getByEmail(email);

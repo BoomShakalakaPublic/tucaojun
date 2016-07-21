@@ -16,4 +16,5 @@ public interface UserDAO {
     public void delete(User user);
     public User getById(Long id);
     public User getByEmail(String email);
+    public boolean isEmailAvai(String email);
 }

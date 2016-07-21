@@ -34,7 +34,7 @@ public class GossipDAOImpTest {
     
     @BeforeClass
     public static void setUpClass() {
-        user = new User("testG","passw","testG@test");
+        user = new User("testG","passw","testG@test.com");
         UserDAOImp instance = new UserDAOImp();
         instance.save(user);
     }

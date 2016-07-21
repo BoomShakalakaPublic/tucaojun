@@ -40,6 +40,7 @@ public class UserDAOImp implements UserDAO{
         Transaction tran=session.beginTransaction();
         session.delete(user);
         tran.commit();
+        
     }
 
     @Override
@@ -47,7 +48,7 @@ public class UserDAOImp implements UserDAO{
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
         User user=(User) session.get(User.class,id);
-        
+        tran.commit();
         return user;        
         
     }
@@ -58,8 +59,15 @@ public class UserDAOImp implements UserDAO{
         Transaction tran=session.beginTransaction();
         Criteria criteria=session.createCriteria(User.class);
         User user=(User) criteria.add(Restrictions.eq("email",email)).uniqueResult();
+        tran.commit();
         return user;
         
+    }
+
+    @Override
+    public boolean isEmailAvai(String email) {
+        User user = getByEmail(email);
+        return user==null;
     }
     
     

@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -30,9 +32,14 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable=false)
+    @NotEmpty(message="Username cannot be empty")
     private String username;
     @Column(nullable=false)
+    @NotEmpty(message="Password cannot be empty")
+   
     private String password;
+    @Email(message="Invalide email format")
+    @NotEmpty(message="Email cannot be empty")
     @Column(nullable=false, unique=true)
     private String email;
     @ManyToMany(fetch = FetchType.EAGER, mappedBy="viewedUsers")
