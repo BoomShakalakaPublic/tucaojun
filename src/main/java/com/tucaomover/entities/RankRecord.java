@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tucaomover.service;
+package com.tucaomover.entities;
 
 import java.util.Comparator;
 
@@ -11,16 +11,16 @@ import java.util.Comparator;
  *
  * @author gao
  */
-public class rankingRecord implements Comparable<rankingRecord>{
+public class RankRecord implements Comparable<RankRecord>{
     private String postId;
     private String text;
     private double score;
     
-    public rankingRecord(){
+    public RankRecord(){
         
     }
     
-    public rankingRecord(String id, String content, double score){
+    public RankRecord(String id, String content, double score){
         this.postId=id;
         this.text=content;
         this.score=score;
@@ -28,7 +28,7 @@ public class rankingRecord implements Comparable<rankingRecord>{
 
 
     @Override
-    public int compareTo(rankingRecord o1) {
+    public int compareTo(RankRecord o1) {
         return this.score<o1.getScore() ? -1 : this.score==o1.getScore() ? 0 : 1;
     }
 

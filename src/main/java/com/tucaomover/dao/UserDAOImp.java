@@ -30,6 +30,7 @@ public class UserDAOImp implements UserDAO{
         Transaction tran = session.beginTransaction();
         session.saveOrUpdate(user);
         tran.commit();
+      
         return user.getId();
     }
     
@@ -38,8 +39,9 @@ public class UserDAOImp implements UserDAO{
     public void delete(User user) {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        session.delete(user);
+        session.delete(user);        
         tran.commit();
+     
         
     }
 
@@ -49,6 +51,7 @@ public class UserDAOImp implements UserDAO{
         Transaction tran=session.beginTransaction();
         User user=(User) session.get(User.class,id);
         tran.commit();
+       
         return user;        
         
     }
@@ -60,6 +63,7 @@ public class UserDAOImp implements UserDAO{
         Criteria criteria=session.createCriteria(User.class);
         User user=(User) criteria.add(Restrictions.eq("email",email)).uniqueResult();
         tran.commit();
+        
         return user;
         
     }

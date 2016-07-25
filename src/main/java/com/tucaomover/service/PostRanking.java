@@ -5,6 +5,7 @@
  */
 package com.tucaomover.service;
 
+import com.tucaomover.entities.RankRecord;
 import com.tucaomover.dao.GossipDAOImp;
 import com.tucaomover.entities.Gossip;
 import com.tucaomover.entities.User;
@@ -22,21 +23,21 @@ import org.springframework.stereotype.Service;
  * @author gao
  */
 @Service
-public class postRanking {
+public class PostRanking {
     private GossipDAOImp gossipDao = new GossipDAOImp();
     
-    public List<rankingRecord> rank(User user){
+    public List<RankRecord> rank(User user){
         List<Gossip> allPost = gossipDao.getAll();
         Set <Gossip> viewedPost = user.getViewedGossips();
-        List<rankingRecord> result = new ArrayList<rankingRecord>();
+        List<RankRecord> result = new ArrayList<RankRecord>();
         for(Gossip post : allPost){
-            rankingRecord rr = new rankingRecord(post.getId(),post.getText(),score(post));
+            RankRecord rr = new RankRecord(post.getId(),post.getText(),score(post));
             if(viewedPost.contains(post)){
-                rr.setScore(rr.getScore()*0.3);
+                rr.setScore(rr.getScore()*0.2);
             }
             result.add(rr);
         }
-       //Collections.sort(result);
+       Collections.sort(result,Collections.reverseOrder());
         return result;
     }
     
@@ -44,8 +45,8 @@ public class postRanking {
         double result=0;
         result= gossip.getUpNum()*10+gossip.getCommentsNum()*20+gossip.getForwardNum()*30;
         Timestamp now = new Timestamp(new Date().getTime());
-        double interval=log((now.getTime()-gossip.getTimeRetrieved().getTime())/3600000);
-        result/=interval;
+        double interval=log((now.getTime()-gossip.getTimeRetrieved().getTime())/60000);
+        result=result/interval;
         return result;
                 
     }

@@ -32,6 +32,7 @@ public class GossipDAOImp implements GossipDAO{
         Transaction tran=session.beginTransaction();
         session.saveOrUpdate(gossip);
         tran.commit();
+      
     }
 
     @Override
@@ -40,13 +41,17 @@ public class GossipDAOImp implements GossipDAO{
         Transaction tran=session.beginTransaction();
         session.delete(gossip);
         tran.commit();
+        
     }
 
     @Override
     public List<Gossip> getAll() {
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
-        List<Gossip> all=session.createCriteria(Gossip.class).list();
+        Criteria criteria = session.createCriteria(Gossip.class);
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        List<Gossip> all=criteria.list();
+        tran.commit();
         return all;
         
     }
@@ -56,6 +61,7 @@ public class GossipDAOImp implements GossipDAO{
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
         Gossip gossip=(Gossip) session.get(Gossip.class, id);
+        tran.commit();
         return gossip;
     }
     

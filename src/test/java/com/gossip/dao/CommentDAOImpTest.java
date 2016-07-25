@@ -24,6 +24,7 @@ import static org.junit.Assert.*;
  *
  * @author gao
  */
+
 public class CommentDAOImpTest {
     private static Gossip gossip;
     private Comment comment;

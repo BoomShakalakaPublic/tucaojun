@@ -8,14 +8,18 @@ package com.tucaomover.entities;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -41,8 +45,12 @@ public class User implements Serializable {
     @Email(message="Invalide email format")
     @NotEmpty(message="Email cannot be empty")
     @Column(nullable=false, unique=true)
-    private String email;
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy="viewedUsers")
+    private String email;    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinTable(name = "user_gossip",joinColumns = { 
+                    @JoinColumn(name = "user_id", nullable = false) }, 
+                    inverseJoinColumns = { @JoinColumn(name = "gossip_id", 
+                                    nullable = false) })
     private Set<Gossip> viewedGossips = new HashSet(); 
     
     public User(){};

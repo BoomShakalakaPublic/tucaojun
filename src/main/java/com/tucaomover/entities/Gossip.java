@@ -21,6 +21,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -46,13 +47,9 @@ public class Gossip implements Serializable {
     private long forwardNum;
     @Column
     private long commentsNum;
-    @OneToMany(mappedBy="gossip", cascade=CascadeType.REMOVE)
+    @OneToMany(mappedBy="gossip", cascade=CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Set<Comment> hotComments;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
-    @JoinTable(name = "user_gossip",joinColumns = { 
-                    @JoinColumn(name = "gossip_id", nullable = false, updatable = false) }, 
-                    inverseJoinColumns = { @JoinColumn(name = "user_id", 
-                                    nullable = false, updatable = false) })
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy="viewedGossips")
     private Set<User> viewedUsers = new HashSet();
     
     public Gossip(){

@@ -5,6 +5,8 @@
  */
 package com.tucaomover.service;
 
+import com.tucaomover.entities.RankRecord;
+import com.tucaomover.dao.UserDAOImp;
 import com.tucaomover.entities.User;
 import java.util.List;
 import org.junit.After;
@@ -18,17 +20,22 @@ import static org.junit.Assert.*;
  *
  * @author gao
  */
-public class postRankingTest {
-    
-    public postRankingTest() {
+public class PostRankingTest {
+    private static User user;
+    public PostRankingTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        user = new User("testG","passw","testG@test.com");
+        UserDAOImp instance = new UserDAOImp();
+        instance.save(user);
     }
     
     @AfterClass
     public static void tearDownClass() {
+        UserDAOImp instance=new UserDAOImp();
+        instance.delete(user);
     }
     
     @Before
@@ -45,13 +52,12 @@ public class postRankingTest {
     @Test
     public void testRank() {
         System.out.println("rank");
-        User user = null;
-        postRanking instance = new postRanking();
-        List<rankingRecord> expResult = null;
-        List<rankingRecord> result = instance.rank(user);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        PostRanking instance = new PostRanking();
+        List<RankRecord> result = instance.rank(user);
+        for(RankRecord r : result){
+            System.out.println(r.getPostId()+"  "+ r.getScore());
+        }
+        
     }
     
 }

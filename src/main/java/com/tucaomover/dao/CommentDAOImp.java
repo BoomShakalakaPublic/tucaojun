@@ -29,6 +29,7 @@ public class CommentDAOImp implements CommentDAO{
         Transaction tran=session.beginTransaction();
         session.saveOrUpdate(comment);
         tran.commit();
+  
     }
 
     @Override
@@ -37,6 +38,7 @@ public class CommentDAOImp implements CommentDAO{
         Transaction tran=session.beginTransaction();
         session.delete(comment);
         tran.commit();
+
     }
 
     @Override
@@ -44,6 +46,7 @@ public class CommentDAOImp implements CommentDAO{
         Session session=sessionFactory.getCurrentSession();
         Transaction tran=session.beginTransaction();
         Comment comment=(Comment) session.get(Comment.class, id);
+        tran.commit();
         return comment;
     }
     
