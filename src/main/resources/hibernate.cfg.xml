@@ -13,9 +13,9 @@
     <property name="hibernate.connection.password">VDEiHTuhBKSd</property>
     -->
     
-    <property name="hibernate.connection.url">jdbc:mysql://579686382d5271868700001e-easyforlife.rhcloud.com:64846/</property>
-    <property name="hibernate.connection.username">admin22sxl3Y</property>
-    <property name="hibernate.connection.password">ayDKZTtt1dXN</property>
+    <property name="hibernate.connection.url">jdbc:mysql://5796d7a32d5271f3ad00000a-easyforlife.rhcloud.com:57926/crawler?characterEncoding=UTF-8</property>
+    <property name="hibernate.connection.username">admin2flec7a</property>
+    <property name="hibernate.connection.password">7DIga8fbNYBJ</property>
 
     <!--
     <property name="hibernate.connection.url">jdbc:mysql://localhost/gossip?characterEncoding=UTF-8</property>
