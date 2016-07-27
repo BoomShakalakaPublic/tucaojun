@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Yrsa';
+  font-style: light;
+  font-weight: 200;
+  src: local('Yrsa-Light'), url('../fonts/Yrsa/Yrsa-Light.ttf') format('tff');
+}
+
+@font-face {
+  font-family: 'Yrsa';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Yrsa-Regular'), url('../fonts/Yrsa/Yrsa-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Yrsa';
+  font-style: bold;
+  font-weight: 700;
+  src: local('Yrsa-Bold'), url(../fonts/Yrsa/Yrsa-Bold.ttf') format('ttf');
+}
