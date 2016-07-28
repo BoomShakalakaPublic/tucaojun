@@ -103,7 +103,26 @@
 
     <hr>    
  
-       
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <h1 >热门评论:</h1>
+                    <table class="table-responsive">
+                        <c:forEach items="${p.hotComments}" var="c">
+                        <tr>
+                        <p>${c.content}</p>
+                            
+                        </tr>
+                        <hr>
+                        </c:forEach>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
         
         
         
