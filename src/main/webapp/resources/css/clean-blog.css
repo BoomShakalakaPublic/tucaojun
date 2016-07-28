@@ -232,8 +232,8 @@ article img.full {
 .intro-header .site-heading .subheading,
 .intro-header .page-heading .subheading {
   font-size: 24px;
-  line-height: 1.1,
-			display: block;
+  line-height: 1.1;
+  display: block;
   font-family: 'Work Sans', 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
@@ -319,8 +319,8 @@ article img.full {
 }
 .section-heading {
   font-size: 36px;
-  margin-top: 60px;
-  font-weight: 700;
+
+  font-weight: 600;
 }
 .caption {
   text-align: center;

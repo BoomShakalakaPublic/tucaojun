@@ -30,7 +30,7 @@
         <link rel="canonical" href="https://blog.union.io/page2/">
 
         <!-- Bootstrap Core CSS -->
-        <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css" />">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="<c:url value="/resources/css/clean-blog.css" />">
@@ -112,12 +112,17 @@
                             
         <c:forEach items="${post}" var="item">
                     <div class="post-preview">
-                        <a href="<c:url value="/p/${item.postId}"/>">
-                            <h4 class="post-title">   ${item.text} 
+                        <a href="<c:url value="/p/${item.gossip.id}"/>">
+                            <h4 class="post-title">   ${item.gossip.text} 
                             </h4>
 
                         </a>
-                        <p class="post-meta">Published in Code, on December 17, 2015</p>
+                        <p class="post-meta">
+                        <span class="glyphicon glyphicon-share"></span>  ${item.gossip.forwardNum} 
+                            <span class="glyphicon glyphicon-edit"></span>   ${item.gossip.commentsNum}  
+                            <span class="glyphicon glyphicon-thumbs-up"></span>  ${item.gossip.upNum}
+                            
+                                      Found at ${item.gossip.timeRetrieved}</p>
                     </div>
                     <hr>
             

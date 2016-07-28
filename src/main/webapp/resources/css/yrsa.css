@@ -16,5 +16,5 @@
   font-family: 'Yrsa';
   font-style: bold;
   font-weight: 700;
-  src: local('Yrsa-Bold'), url(../fonts/Yrsa/Yrsa-Bold.ttf') format('ttf');
+  src: local('Yrsa-Bold'), url('../fonts/Yrsa/Yrsa-Bold.ttf') format('ttf');
 }
