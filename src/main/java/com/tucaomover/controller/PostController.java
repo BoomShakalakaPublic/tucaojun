@@ -37,6 +37,7 @@ public class PostController {
         ModelAndView model = new ModelAndView("post");
         model.addObject("p", post);
         User user = (User) request.getSession().getAttribute("user");
+        model.addObject("user", user);
         postUtil.viewed(user, post);
         return model;
     }

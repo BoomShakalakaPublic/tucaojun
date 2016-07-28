@@ -31,7 +31,7 @@ public class PostRanking {
         Set <Gossip> viewedPost = user.getViewedGossips();
         List<RankRecord> result = new ArrayList<RankRecord>();
         for(Gossip post : allPost){
-            RankRecord rr = new RankRecord(post.getId(),post.getText(),score(post));
+            RankRecord rr = new RankRecord(post,score(post));
             if(viewedPost.contains(post)){
                 rr.setScore(rr.getScore()*0.2);
             }

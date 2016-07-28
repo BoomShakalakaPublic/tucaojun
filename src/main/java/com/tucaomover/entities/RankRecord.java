@@ -12,17 +12,15 @@ import java.util.Comparator;
  * @author gao
  */
 public class RankRecord implements Comparable<RankRecord>{
-    private String postId;
-    private String text;
+    private Gossip gossip;
     private double score;
     
     public RankRecord(){
         
     }
     
-    public RankRecord(String id, String content, double score){
-        this.postId=id;
-        this.text=content;
+    public RankRecord(Gossip g, double score){
+        this.gossip=g;
         this.score=score;
     }
 
@@ -35,31 +33,7 @@ public class RankRecord implements Comparable<RankRecord>{
     /**
      * @return the postId
      */
-    public String getPostId() {
-        return postId;
-    }
-
-    /**
-     * @param postId the postId to set
-     */
-    public void setPostId(String postId) {
-        this.postId = postId;
-    }
-
-    /**
-     * @return the text
-     */
-    public String getText() {
-        return text;
-    }
-
-    /**
-     * @param text the text to set
-     */
-    public void setText(String text) {
-        this.text = text;
-    }
-
+    
     /**
      * @return the score
      */
@@ -72,6 +46,20 @@ public class RankRecord implements Comparable<RankRecord>{
      */
     public void setScore(double score) {
         this.score = score;
+    }
+
+    /**
+     * @return the gossip
+     */
+    public Gossip getGossip() {
+        return gossip;
+    }
+
+    /**
+     * @param gossip the gossip to set
+     */
+    public void setGossip(Gossip gossip) {
+        this.gossip = gossip;
     }
 
     
