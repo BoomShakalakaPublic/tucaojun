@@ -45,7 +45,7 @@ public class PostRanking {
         double result=0;
         result= (gossip.getUpNum()+gossip.getCommentsNum()+gossip.getForwardNum())*10;
         Timestamp now = new Timestamp(new Date().getTime());
-        double interval=log((now.getTime()-gossip.getTimeRetrieved().getTime())/60000+1);
+        double interval=(now.getTime()-gossip.getTimeRetrieved().getTime())/60000;
         result=result/interval;
         return result;
                 
