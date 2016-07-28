@@ -55,7 +55,7 @@ public class PostRankingTest {
         PostRanking instance = new PostRanking();
         List<RankRecord> result = instance.rank(user);
         for(RankRecord r : result){
-            System.out.println(r.getPostId()+"  "+ r.getScore());
+            System.out.println(r.getGossip().getId()+"  "+ r.getScore());
         }
         
     }

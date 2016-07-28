@@ -13,7 +13,7 @@
     <property name="hibernate.connection.password">VDEiHTuhBKSd</property>
     -->
     
-  
+
     <property name="hibernate.connection.url">jdbc:mysql://5796d7a32d5271f3ad00000a-easyforlife.rhcloud.com:57926/crawler?characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">admin2flec7a</property>
     <property name="hibernate.connection.password">7DIga8fbNYBJ</property>
