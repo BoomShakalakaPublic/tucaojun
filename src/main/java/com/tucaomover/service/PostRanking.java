@@ -33,7 +33,7 @@ public class PostRanking {
         for(Gossip post : allPost){
             RankRecord rr = new RankRecord(post,score(post));
             if(viewedPost.contains(post)){
-                rr.setScore(rr.getScore()*0.2);
+                rr.setScore(rr.getScore()*0.1);
             }
             result.add(rr);
         }
@@ -43,9 +43,9 @@ public class PostRanking {
     
     private double score(Gossip gossip){
         double result=0;
-        result= gossip.getUpNum()*10+gossip.getCommentsNum()*20+gossip.getForwardNum()*30;
+        result= (gossip.getUpNum()+gossip.getCommentsNum()+gossip.getForwardNum())*10;
         Timestamp now = new Timestamp(new Date().getTime());
-        double interval=log((now.getTime()-gossip.getTimeRetrieved().getTime())/60000);
+        double interval=log((now.getTime()-gossip.getTimeRetrieved().getTime())/60000+1);
         result=result/interval;
         return result;
                 
