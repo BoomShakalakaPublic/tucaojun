@@ -17,11 +17,10 @@
     <property name="hibernate.connection.url">jdbc:mysql://5796d7a32d5271f3ad00000a-easyforlife.rhcloud.com:57926/crawler?characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">admin2flec7a</property>
     <property name="hibernate.connection.password">7DIga8fbNYBJ</property>
-
-    <!--
+<!--
     <property name="hibernate.connection.url">jdbc:mysql://localhost/gossip?characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
-    -->
+-->
     <property name="show_sql">true</property>
     <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
     

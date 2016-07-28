@@ -92,5 +92,19 @@ public class Comment implements Serializable {
     public void setGossip(Gossip gossip) {
         this.gossip = gossip;
     }
+
+    /**
+     * @return the content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * @param content the content to set
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
     
 }
