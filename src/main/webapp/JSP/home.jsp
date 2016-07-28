@@ -53,7 +53,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <div class="navbar-brand" >${user.username}</div>
+                        <a class="navbar-brand" href="<c:url value="home"/> ">${user.username}</a>
+    
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
