@@ -21,14 +21,11 @@ import org.hibernate.cfg.Configuration;
  * @author gao
  */
 public class GossipDAOImp implements GossipDAO{
-   private Configuration configuration = new Configuration().configure();    
-   private StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-   private SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
-
+    private static HibernateUtil hibernateUtil= new HibernateUtil();
     
     @Override
     public void save(Gossip gossip) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         session.saveOrUpdate(gossip);
         tran.commit();
@@ -37,7 +34,7 @@ public class GossipDAOImp implements GossipDAO{
 
     @Override
     public void delete(Gossip gossip) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         session.delete(gossip);
         tran.commit();
@@ -46,7 +43,7 @@ public class GossipDAOImp implements GossipDAO{
 
     @Override
     public List<Gossip> getAll() {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         Criteria criteria = session.createCriteria(Gossip.class);
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
@@ -58,7 +55,7 @@ public class GossipDAOImp implements GossipDAO{
 
     @Override
     public Gossip getById(String id) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         Gossip gossip=(Gossip) session.get(Gossip.class, id);
         tran.commit();

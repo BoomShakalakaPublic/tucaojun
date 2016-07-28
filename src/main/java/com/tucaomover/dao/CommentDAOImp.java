@@ -17,15 +17,11 @@ import org.hibernate.cfg.Configuration;
  * @author gao
  */
 public class CommentDAOImp implements CommentDAO{
-
-   private Configuration configuration = new Configuration().configure();
-   
-   private StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-   private SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+      private static HibernateUtil hibernateUtil= new HibernateUtil();
     
     @Override
     public void save(Comment comment) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         session.saveOrUpdate(comment);
         tran.commit();
@@ -34,7 +30,7 @@ public class CommentDAOImp implements CommentDAO{
 
     @Override
     public void delete(Comment comment) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         session.delete(comment);
         tran.commit();
@@ -43,7 +39,7 @@ public class CommentDAOImp implements CommentDAO{
 
     @Override
     public Comment getById(String id) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         Comment comment=(Comment) session.get(Comment.class, id);
         tran.commit();

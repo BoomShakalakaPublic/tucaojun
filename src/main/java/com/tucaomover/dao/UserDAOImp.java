@@ -20,13 +20,11 @@ import org.hibernate.criterion.Restrictions;
  */
 public class UserDAOImp implements UserDAO{
     
-   private Configuration configuration = new Configuration().addResource("hibernate.cfg.xml").configure();
-   private StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-   private SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+  private static HibernateUtil hibernateUtil= new HibernateUtil();
 
     @Override
     public Long save(User user) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran = session.beginTransaction();
         session.saveOrUpdate(user);
         tran.commit();
@@ -37,7 +35,7 @@ public class UserDAOImp implements UserDAO{
 
     @Override
     public void delete(User user) {
-        Session session=sessionFactory.getCurrentSession();
+       Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         session.delete(user);        
         tran.commit();
@@ -47,7 +45,7 @@ public class UserDAOImp implements UserDAO{
 
     @Override
     public User getById(Long id) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         User user=(User) session.get(User.class,id);
         tran.commit();
@@ -58,7 +56,7 @@ public class UserDAOImp implements UserDAO{
 
     @Override
     public User getByEmail(String email) {
-        Session session=sessionFactory.getCurrentSession();
+        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         Criteria criteria=session.createCriteria(User.class);
         User user=(User) criteria.add(Restrictions.eq("email",email)).uniqueResult();

@@ -16,43 +16,20 @@ import org.hibernate.cfg.Configuration;
  * @author gao
  */
 public class HibernateUtil {
-    private static SessionFactory sessionFactory;
-    private static final ThreadLocal<Session> threadLocal = new ThreadLocal();
-    
+    private static Configuration configuration = new Configuration().configure();    
+   private static StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+   private static final SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+
+
     public HibernateUtil(){
-        
+       
     }
    
-   private static SessionFactory configureSessionFactory(){
-       try{
-           Configuration configuration = new Configuration().addResource("hibernate.cfg.xml").configure();
-           StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-           sessionFactory = configuration.buildSessionFactory(builder.build());
-       } catch(HibernateException e){
-           System.out.append("Exception in SessionFactory");
-           e.printStackTrace();
-       }
-       return sessionFactory;
-   }
    
-   public static Session getSession() throws HibernateException{
-       Session session = threadLocal.get();
-       if(session == null|| !session.isOpen()){
-           if(sessionFactory == null){
-               configureSessionFactory();
-           }
-        session = (sessionFactory != null) ? sessionFactory.openSession() :null;
-        threadLocal.set(session);   
-       }
-       return session;
+   public  Session getSession() {
+       return sessionFactory.getCurrentSession();
        
    }
    
-   public static void closeSession() throws HibernateException{
-       Session session=(Session) threadLocal.get();
-       threadLocal.set(null);
-       if(session!=null){
-           session.close();
-       }
-   }
+
 }
