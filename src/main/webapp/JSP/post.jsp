@@ -64,7 +64,7 @@
                     <ul class="nav navbar-nav navbar-right">
 
                         <li>
-                            <a href="<c:url value="logout"/> ">Log out</a>
+                            <a href="<c:url value="/logout"/> ">Log out</a>
                         </li>
 
                     </ul>
