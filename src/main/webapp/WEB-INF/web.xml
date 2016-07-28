@@ -17,12 +17,14 @@
 	</filter-class>
 	<init-param>
 		<param-name>avoid-urls</param-name>
-		<param-value>/login</param-value>
+		<param-value>/login,/signup</param-value>
 	</init-param>
     </filter>
     <filter-mapping>
                 <filter-name>authFilter</filter-name>
                 <url-pattern>/</url-pattern>
+                <url-pattern>/home</url-pattern>
+                <url-pattern>/p/*</url-pattern>
     </filter-mapping>
 
        
