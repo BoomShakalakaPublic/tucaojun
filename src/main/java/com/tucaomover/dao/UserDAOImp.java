@@ -27,7 +27,13 @@ public class UserDAOImp implements UserDAO{
         Session session=hibernateUtil.getSession();
         Transaction tran = session.beginTransaction();
         session.saveOrUpdate(user);
-        tran.commit();
+        try{
+            tran.commit();
+        } catch(RuntimeException e){
+            tran.rollback();
+            throw e;
+        }
+  tran.commit();
       
         return user.getId();
     }
@@ -38,7 +44,13 @@ public class UserDAOImp implements UserDAO{
        Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         session.delete(user);        
-        tran.commit();
+        try{
+            tran.commit();
+        } catch(RuntimeException e){
+            tran.rollback();
+            throw e;
+        }
+  
      
         
     }
@@ -48,7 +60,13 @@ public class UserDAOImp implements UserDAO{
         Session session=hibernateUtil.getSession();
         Transaction tran=session.beginTransaction();
         User user=(User) session.get(User.class,id);
-        tran.commit();
+        try{
+            tran.commit();
+        } catch(RuntimeException e){
+            tran.rollback();
+            throw e;
+        }
+  
        
         return user;        
         
@@ -60,7 +78,13 @@ public class UserDAOImp implements UserDAO{
         Transaction tran=session.beginTransaction();
         Criteria criteria=session.createCriteria(User.class);
         User user=(User) criteria.add(Restrictions.eq("email",email)).uniqueResult();
-        tran.commit();
+        try{
+            tran.commit();
+        } catch(RuntimeException e){
+            tran.rollback();
+            throw e;
+        }
+  
         
         return user;
         
