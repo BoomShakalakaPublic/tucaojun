@@ -7,6 +7,7 @@ package com.tucaomover.service;
 
 import com.tucaomover.dao.UserDAOImp;
 import com.tucaomover.entities.User;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 
@@ -23,11 +24,12 @@ public class UserDetails {
         
     }
     
+    @Transactional
     public User loadByEmail(String email){
         return userDao.getByEmail(email);
     }
     
-    
+    @Transactional
     public boolean userAuth (String email,String password){    
            User user=userDao.getByEmail(email);
            if(user==null){
@@ -39,6 +41,7 @@ public class UserDetails {
  
     }
     
+    @Transactional
     public boolean addUser(User user){
         if(userDao.isEmailAvai(user.getEmail())){
             userDao.save(user);

@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -26,6 +27,7 @@ import org.springframework.stereotype.Service;
 public class PostRanking {
     private GossipDAOImp gossipDao = new GossipDAOImp();
     
+    @Transactional
     public List<RankRecord> rank(User user){
         List<Gossip> allPost = gossipDao.getAll();
         Set <Gossip> viewedPost = user.getViewedGossips();
@@ -41,6 +43,7 @@ public class PostRanking {
         return result;
     }
     
+    @Transactional
     private double score(Gossip gossip){
         double result=0;
         result= (gossip.getUpNum()+gossip.getCommentsNum()+gossip.getForwardNum())*10;

@@ -126,7 +126,7 @@
 
 
         <!-- Pager -->
-
+<!--
         <ul class="pager">
 
             <li class="previous">
@@ -140,7 +140,7 @@
                         </div>
                 </div>
         </div>
-
+-->
         <hr>
         
         <!-- jQuery -->
